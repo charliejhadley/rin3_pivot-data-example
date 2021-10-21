@@ -1,0 +1,31 @@
+---
+title: "Climate Change"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(janitor)
+```
+
+# Obtaining Data
+
+The World Bank provides [several datasets for studying climate change](https://data.worldbank.org/topic/climate-change?view=chart).
+
+This code downloads and unzips the data.
+
+```{r}
+download.file("https://api.worldbank.org/v2/en/topic/19?downloadformat=csv",
+              destfile = "data/climate-data.zip")
+unzip("data/climate-data.zip",
+      exdir = "data/climate-data")
+```
+
+# Analysing the data
+
+```{r}
+climate_data <- read_csv("data/climate-data/API_19_DS2_en_csv_v2_3053932.csv",
+                         skip = 3)
+```
+
