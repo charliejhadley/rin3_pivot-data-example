@@ -29,3 +29,10 @@ climate_data <- read_csv("data/climate-data/API_19_DS2_en_csv_v2_3053932.csv",
                          skip = 3)
 ```
 
+```{r}
+climate_data <- climate_data %>% 
+  pivot_longer(`1960`:`2020`) %>% 
+  select(-...66) %>% 
+  clean_names()
+```
+
